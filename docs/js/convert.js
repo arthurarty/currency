@@ -3,8 +3,7 @@
         console.log("Call to collect data");
         const fromCurrency = document.getElementById('fromCurrency').value;
         const toCurrency = document.getElementById('toCurrency').value;
-        let answer = `${fromCurrency} to ${toCurrency} at rate is `;
-        document.getElementById("answer").innerHTML = answer;
+        let answer = '';
 
         let query = `${fromCurrency}_${toCurrency}`;
 
@@ -21,6 +20,9 @@
         // Examine the text in the response
         response.json().then(function(data) {
             console.log(data[query]);
+            const rate = data[query];
+            answer = `${fromCurrency} to ${toCurrency} at rate of ${rate} is `;
+            document.getElementById('answer').innerHTML = answer;
             });
         }
         )
