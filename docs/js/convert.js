@@ -3,7 +3,9 @@
         console.log("Call to collect data");
         const fromCurrency = document.getElementById('fromCurrency').value;
         const toCurrency = document.getElementById('toCurrency').value;
-        let answer = '';
+        const amount = document.getElementById('amount').value;
+
+        let answer = `<p class='text-center'>`;
 
         let query = `${fromCurrency}_${toCurrency}`;
 
@@ -19,9 +21,17 @@
 
         // Examine the text in the response
         response.json().then(function(data) {
-            console.log(data[query]);
+            //console.log(data[query]);
+
+            //store the rate in variable
             const rate = data[query];
-            answer = `${fromCurrency} to ${toCurrency} at rate of ${rate} is `;
+
+            //compute amount in next currency
+            const exchange = Number(amount) * rate;
+
+            //store output in answer
+            answer += `${amount} ${fromCurrency} equals ${exchange} ${toCurrency} at rate of ${rate}`;
+            answer += `<br><button class='btn btn-success' onClick='location.reload()'>Convert more</button></p>`;
             document.getElementById('answer').innerHTML = answer;
             });
         }
@@ -30,4 +40,3 @@
             console.log('Fetch Error :-S', err);
         });
           }  
-          
