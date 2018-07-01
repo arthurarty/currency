@@ -1,4 +1,4 @@
-	//collect data from form
+    //collect data from form
 	function collectData(){
         console.log("Call to collect data");
         const fromCurrency = document.getElementById('fromCurrency').value;
@@ -31,7 +31,7 @@
 
             //store output in answer
             answer += `${amount} ${fromCurrency} equals ${exchange} ${toCurrency} at rate of ${rate}`;
-            answer += `<br><button class='btn btn-success' onClick='location.reload()'>Convert more</button></p>`;
+            answer += `<br><button class='btn btn-success' onClick='location.reload()'>Convert another</button></p>`;
             document.getElementById('answer').innerHTML = answer;
             });
         }
